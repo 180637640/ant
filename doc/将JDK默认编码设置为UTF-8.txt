@@ -1,0 +1,15 @@
+将JDK默认编码设置为UTF-8
+
+创建系统环境变量：
+
+变量名: JAVA_TOOL_OPTIONS， 变量值：-Dfile.encoding=UTF-8
+
+
+jre缺少tools.jar
+1、将JDK目录下面的tools.jar拷贝到jar/lib目录下即可解决
+
+
+
+
+
+

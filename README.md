@@ -1,2 +1,4 @@
-# ant
-方便使用的ETL工具，用来在各数据源之间搬运数据。目前已支持 MySQL、Oracle
+## eta
+
+ETL，是英文Extract-Transform-Load的缩写，用来描述将数据从来源端经过抽取（extract）、转换（transform）、加载（load）至目的端的过程
+
