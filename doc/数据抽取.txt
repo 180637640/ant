@@ -6,12 +6,32 @@ Oracle 向 MySQL 数据同步
 加载（load）
 
 
+MySQL  ================================================================================================================================
+        ================================================================================================================================
 
-快速生成
-
+查看列名和类型（MySQL）
 select CONCAT(column_name,'|',data_type )
 from information_schema.columns
 where table_name='data_hydrology_current' and table_schema='data_center'
+
+select table_name,column_name,data_type
+from information_schema.columns
+where table_schema='data_center'
+order by table_name,column_name
+
+
+查看列名和类型（Oracle）
+select TABLE_NAME,COLUMN_NAME,DATA_TYPE from all_tab_columns where TABLE_NAME like 'V_%' order by TABLE_NAME,COLUMN_NAME
+
+需要获得一个视图中的字段名称、字段类型、字段长度等信息，该如何编写sql语句。
+通过 select * from all_tab_columns 可以获得给定用户下所有的视图名称了，但是没找到如何获取视图结构的解决方法，求路过的大神解惑。
+
+all_tab_cols / all_tab_columns 查看所有用户下的表及视图结构
+user_tab_cols / user_tab_columns 查看当前用户下的表及视图结构
+user_col_comments 查看当前用户下表及视图中字段名称及字段注释
+all_col_comments  查看所以用户下表及视图中字段名称及字段注释
+
+
 
 当天的数据
 datasource.source.query.sql=SELECT * from ch_ship_check WHERE deleted=1 and add_time > CURDATE() LIMIT 10
@@ -28,7 +48,8 @@ datasource.source.query.sql=SELECT * from ch_ship_check WHERE deleted=1 and add_
 
 
 
-Oracle ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Oracle  ================================================================================================================================
+        ================================================================================================================================
 
 SELECT 字段  FROM 表名  WHERE 时间字段  BETWEEN SYSDATE-1 AND SYSDATE; //查询一天内的数据
 
@@ -52,3 +73,29 @@ SELECT 字段  FROM 表名  WHERE 时间字段  BETWEEN  ADD_MONTHS(SYSDATE, -1)
 ADD_MONTHS(SYSDATE, -1) 减一个月
 
 ADD_MONTHS(SYSDATE, 1) 加一个月
+
+
+PostgreSQL  ================================================================================================================================
+        ================================================================================================================================
+
+pgsql语法类似mysql  ，下面总结几个pgsql工作会用到的求时间的语句
+
+1.当前时间向前推一天\
+
+SELECT current_timestamp - interval '1 day'
+
+例：求出最近三天的数据
+select * from 表名 where date between （SELECT current_timestamp - interval '3 day'） and current_timestamp
+
+2.当前时间向前推进一个月
+SELECT current_timestamp - interval '1 month'
+
+3.当前时间向前推进一年
+
+SELECT current_timestamp - interval '1 year'
+4.当前时间向前推一小时：
+SELECT current_timestamp - interval '1 hour'
+5.当前时间向前推一分钟：
+SELECT current_timestamp - interval '1 min'
+6.当前时间向前推60秒：
+SELECT current_timestamp - interval '60 second'

@@ -4,26 +4,31 @@ package cn.hs.ant.bean;
  * ANT Database
  * @author swt
  */
-public class AntDatabaseProperties {
+public class AntDatabaseProperties extends AntProperties{
 
 	/**
 	 * 抽取SQL
 	 */
-	public static String DATASOURCE_SOURCE_QUERY_SQL = "datasource.source.query.sql";
+	public static String QUERY_SQL = "query.sql";
 
 	/**
-	 * 源字段描述
+	 * 目标表名
 	 */
-	public static String DATASOURCE_SOURCE_COLUMN = "datasource.source.column";
+	public static String TARGET_ENDPOINT_TABLE_NAME = "target.endpoint.table.name";
 
 	/**
-	 * 流入表名
+	 * 转换字段前缀
 	 */
-	public static String DATASOURCE_TARGET_TABLE_NAME = "datasource.target.table.name";
+	public static String DATASOURCE_SOURCE_COLUMN_PREFIX = "extract.transform.column.";
 
 	/**
-	 * 目标字段描述
+	 * 源数据源前缀
 	 */
-	public static String DATASOURCE_TARGET_COLUMN = "datasource.target.column";
+	public static String SOURCE_ENDPOINT_DATASOURCE_PREFIX = "source.endpoint.datasource.";
+
+	/**
+	 * 目标数据源前缀
+	 */
+	public static String TARGET_ENDPOINT_DATASOURCE_PREFIX = "target.endpoint.datasource.";
 
 }

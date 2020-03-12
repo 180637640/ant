@@ -17,4 +17,19 @@ public class TerminalTypes {
 	 */
 	public final static String ORACLE = "oracle";
 
+	/**
+     * PostgreSQL
+	 */
+	public final static String POSTGRESQL = "postgresql";
+
+	/**
+     * DB2
+	 */
+	public final static String DB2 = "db2";
+
+	/**
+     * SQLSERVER
+	 */
+	public final static String SQLSERVER = "sqlserver";
+
 }

@@ -1,7 +1,7 @@
 package cn.hs.ant.job;
 
 import cn.hs.config.RedisGlobalLock;
-import cn.hs.ant.service.ForwardService;
+import cn.hs.ant.core.ForwardService;
 import cn.hs.util.UF;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.logging.Log;
@@ -26,7 +26,7 @@ public class TaskJob {
     private RedisGlobalLock redisGlobalLock;
     @Resource
     private ForwardService forwardService;
-    @Value("${etl.job.file.path}")
+    @Value("${ant.job.file.path}")
     private String filePath;
 
     /**
